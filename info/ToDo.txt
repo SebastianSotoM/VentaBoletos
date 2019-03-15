@@ -1,0 +1,24 @@
+To Do List:
+
+Reglas de negocio:
+
+    o Se maneja por reserva, y puede existir la posibilidad de que “antes de que vaya a iniciar la función”, hayas localidades llenas.
+    o Las personas hacen reservaciones y deben llegar al teatro antes a pagar las reservaciones realizadas para poder entrar al teatro.
+    o Si hay localidades llenas y se quiere “asistir a la localidad”, se entra en una “cola de espera”.
+    o Existe una opción de “liberar reservaciones”, esto sucede antes de iniciar la función.
+        o Se supone que las reservaciones son efectivas hasta media hora antes de iniciar la función.
+        o Si no se han hecho efectivas, es decir que quien hizo la reservación llegue a pagar, entonces se liberan las reservaciones y los que están en “lista de espera” pueden ingresar a las localidades pagando su entrada.
+    o Por lo tanto, el sistema permite RESERVAR ENTRADAS y APARTE, PAGAR
+    ENTRADAS RESERVADAS y PAGAR ENTRADAS (para los que están en listas de
+    espera).
+
+Sebas:
+
+    1) área preferencial de 10 espacios frente al escenario y se puede reservar el espacio específico. Tiene un costo de ¢7.000 cada espacio.
+
+    2) 50 espacios (con un pasillo en medio, es decir 5 hileras de 5 espacios cada una), de gradería preferencial en la cual las personas que reservan y compran entrada se van sentando según compran o reservan. Este comportamiento es en forma de pila para cada hilera. Tiene un costo de ¢5.500 cada espacio.
+
+Mat:
+    1) Atrás del teatro, está la gradería general, que tiene espacio para 50 espacios y las personas se van ubicando según reserven o compren. Este comportamiento es en forma de lista simple. Tiene un costo de ¢4.000 cada espacio
+
+    2) Interfaz

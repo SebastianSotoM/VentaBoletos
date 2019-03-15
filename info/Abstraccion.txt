@@ -1,0 +1,13 @@
+Objetos:
+    Funcion (TIENE LAS LISTAS y las horas de funcion controla la venta y reservacion de espacios)
+    Personas (Para la lista de espera, cedula, nombre )
+    Espacios (Donde van las personas)
+        Persona
+        reservado
+        pago
+        precio
+    Lista Espera
+    Lista Reservaciones
+    Lista Area Preferencial
+    Lista Graderia Preferencial
+    Lista Graderia General
