@@ -1,13 +1,19 @@
 Objetos:
     Funcion (TIENE LAS LISTAS y las horas de funcion controla la venta y reservacion de espacios)
-    Personas (Para la lista de espera, cedula, nombre )
+        Lista Area Preferencial
+        Lista Graderia Preferencial
+        Lista Graderia General
+
     Espacios (Donde van las personas)
-        Persona
-        reservado
-        pago
-        precio
+        string cedula_persona
+        bool reservado
+        bool pago
     Lista Espera
-    Lista Reservaciones
-    Lista Area Preferencial
-    Lista Graderia Preferencial
-    Lista Graderia General
+
+EstaLLena (cuando se pide la totalidad de la recaudacion, se multiplica el precio por la longitud de la lista)
+Precio por espacio (si no esta llena, se debe ir por cada espacio de la lista para ver cuales estan pagos)
+    ListaEspacios
+    ColaEspacios
+    PilaEspacios
+NodoEspacios
+Funcion
