@@ -1,0 +1,1 @@
+La aplicacion debe ralizar la apertura de los espacios reservados a tiempo real o por medio de un evento?
