@@ -8,10 +8,11 @@
 
 class Nodo {
 protected:
-    Nodo *cabeza;
+    Nodo *siguiente;
 public:
-    Nodo *getCabeza();
-    void setCabeza(Nodo *);
+    Nodo();
+    Nodo *getSiguiente();
+    void setSiguiente(Nodo *);
 };
 
 
