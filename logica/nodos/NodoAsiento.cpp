@@ -5,7 +5,6 @@
 #include "NodoAsiento.h"
 
 NodoAsiento::NodoAsiento() {
-    Nodo();
     this->cedulaReservacion = "";
     this->pago = false;
     this->reservado = false;
