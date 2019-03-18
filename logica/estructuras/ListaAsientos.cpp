@@ -3,14 +3,13 @@
 //
 
 #include "ListaAsientos.h"
-#include "../nodos/NodoAsiento.h"
 
-ListaAsientos::ListaAsientos(){
+ListaAsientos::ListaAsientos() {
     this->precioTotal = 0;
     this->precioAsiento = 0;
 }
 
-ListaAsientos::ListaAsientos(int _precioAsiento){
+ListaAsientos::ListaAsientos(int _precioAsiento) {
 
     this->precioTotal = 0;
     this->precioAsiento = _precioAsiento;
@@ -28,8 +27,6 @@ int ListaAsientos::getPrecioTotal() const {
     return precioTotal;
 }
 
-void ListaAsientos::setPrecioTotal(int precioTotal) {
-    ListaAsientos::precioTotal = precioTotal;
+void ListaAsientos::calcPrecioTotal(int _precioTotal) {
+    this->precioTotal = this->longitud * this->precioAsiento;
 }
-
-

@@ -17,12 +17,14 @@ public:
     virtual bool insertarOrdenado(Nodo *) = 0;
     virtual bool eliminar(int) = 0;
     virtual bool buscar(int) = 0;
+    virtual bool isChild(Nodo *) = 0;
 
     EstructuraBase();
     int getLongitud();
     void setLongitud(int);
     Nodo *getCabeza();
     void setCabeza(Nodo *);
+    bool esVacia();
 };
 
 

@@ -23,3 +23,7 @@ void EstructuraBase::setLongitud(int value) {
 int EstructuraBase::getLongitud() {
     return this->longitud;
 }
+
+bool EstructuraBase::esVacia() {
+    return longitud <= 0;
+}

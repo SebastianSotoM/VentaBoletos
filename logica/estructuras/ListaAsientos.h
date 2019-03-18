@@ -5,6 +5,7 @@
 #ifndef VENTABOLETOS_LISTAASIENTOS_H
 #define VENTABOLETOS_LISTAASIENTOS_H
 
+#include <iostream>
 #include "EstructuraBase.h"
 #include "../nodos/NodoAsiento.h"
 
@@ -23,18 +24,42 @@ public:
 
     int getPrecioTotal() const;
 
-    void setPrecioTotal(int precioTotal);
+    void calcPrecioTotal(int);
 
     bool insertarInicio(Nodo *nuevo) {
-        NodoAsiento *nodo = static_cast<NodoAsiento *>(nuevo);
-        return nodo->esPago();
-    }
-
-    bool insertarFinal(Nodo *) {
+        if(isChild(nuevo)){
+            NodoAsiento *n = (NodoAsiento *) nuevo;
+            if(esVacia()){
+                setCabeza(n);
+            }else{
+                n->setSiguiente(getCabeza());
+                setCabeza(n);
+            }
+            longitud++;
+            return true;
+        }
         return false;
     }
 
-    bool insertarOrdenado(Nodo *) {
+    bool insertarFinal(Nodo *nuevo) {
+        if(isChild(nuevo)){
+            NodoAsiento *n = (NodoAsiento *) nuevo;
+
+
+            longitud++;
+            return true;
+        }
+        return false;
+    }
+
+    bool insertarOrdenado(Nodo *nuevo) {
+        if(isChild(nuevo)){
+            NodoAsiento *n = (NodoAsiento *) nuevo;
+
+
+            longitud++;
+            return true;
+        }
         return false;
     }
 
@@ -43,6 +68,12 @@ public:
     }
 
     bool buscar(int) {
+        return false;
+    }
+
+    bool isChild(Nodo * toCast) {
+        if(toCast->getClassName() == "NodoAsiento")
+            return true;
         return false;
     }
 

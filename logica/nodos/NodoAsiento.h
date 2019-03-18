@@ -18,10 +18,21 @@ public:
     bool esPago();
     bool esReservado();
     std::string getCedulaReservacion();
-
     void setPago(bool);
     void setReservado(bool);
     void setCedulaReservacion(std::string);
+
+    std::string getClassName() override{
+        return "NodoAsiento";
+    }
+
+    std::string toString() override{
+        std::stringstream info;
+        info << "\nNodoAsiento:\nSiguiente:\t"<< ((siguiente == nullptr)?"null":siguiente->toString())
+        <<"\nReservado:\t"<<((esReservado())?"true":"false")<<"\nPago:\t"<<((esPago())?"true":"false");
+
+        return info.str();
+    }
 };
 
 
