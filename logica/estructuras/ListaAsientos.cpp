@@ -28,5 +28,34 @@ int ListaAsientos::getPrecioTotal() const {
 }
 
 void ListaAsientos::calcPrecioTotal(int _precioTotal) {
-    this->precioTotal = this->longitud * this->precioAsiento;
+    NodoAsiento *aux = (NodoAsiento *) getCabeza();
+    int pagados = 0;
+    while (aux != nullptr) {
+        if (aux->esPago()) {
+            pagados++;
+        }
+    }
+    this->precioTotal = pagados * precioAsiento;
+}
+
+NodoAsiento *ListaAsientos::buscarIndice(int index) {
+    if (!esVacia()) {
+        NodoAsiento *aux = (NodoAsiento *) getCabeza();
+        int i = 0;
+        while (i != index && aux != nullptr) {
+            aux = (NodoAsiento *) aux->getSiguiente();
+        }
+        return (aux == nullptr)?nullptr:aux;
+    }
+}
+
+NodoAsiento *ListaAsientos::buscarCedulaReservacion(std::string ced) {
+    if (!esVacia()) {
+        NodoAsiento *aux = (NodoAsiento *) getCabeza();
+        while (aux != nullptr && aux->getCedulaReservacion() != ced) {
+            aux = (NodoAsiento *) aux->getSiguiente();
+        }
+        return aux;
+    }
+    return nullptr;
 }

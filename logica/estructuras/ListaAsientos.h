@@ -67,9 +67,9 @@ public:
         return false;
     }
 
-    bool buscar(int) {
-        return false;
-    }
+    NodoAsiento *buscarIndice(int index);
+
+    NodoAsiento *buscarCedulaReservacion(std::string ced);
 
     bool isChild(Nodo * toCast) {
         if(toCast->getClassName() == "NodoAsiento")

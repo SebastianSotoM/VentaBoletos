@@ -30,6 +30,7 @@ void NodoAsiento::setReservado(bool _reservado) {
     this->reservado = _reservado;
 }
 
-void NodoAsiento::setCedulaReservacion(std::string _ced) {
+void NodoAsiento::reservar(std::string _ced) {
     this->cedulaReservacion = _ced;
+    this->reservado = true;
 }

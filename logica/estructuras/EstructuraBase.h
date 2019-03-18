@@ -16,7 +16,6 @@ public:
     virtual bool insertarFinal(Nodo *) = 0;
     virtual bool insertarOrdenado(Nodo *) = 0;
     virtual bool eliminar(int) = 0;
-    virtual bool buscar(int) = 0;
     virtual bool isChild(Nodo *) = 0;
 
     EstructuraBase();

@@ -20,7 +20,7 @@ public:
     std::string getCedulaReservacion();
     void setPago(bool);
     void setReservado(bool);
-    void setCedulaReservacion(std::string);
+    void reservar(std::string);
 
     std::string getClassName() override{
         return "NodoAsiento";
