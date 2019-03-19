@@ -3,4 +3,4 @@ project(VentaBoletos)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(VentaBoletos main.cpp logica/estructuras/EstructuraBase.cpp logica/estructuras/EstructuraBase.h logica/nodos/Nodo.cpp logica/nodos/Nodo.h logica/nodos/NodoAsiento.cpp logica/nodos/NodoAsiento.h logica/estructuras/ListaAsientos.cpp logica/estructuras/ListaAsientos.h logica/Funcion.cpp logica/Funcion.h logica/estructuras/ListaAsientos.cpp logica/estructuras/ListaAsientos.h logica/nodos/NodoAsiento.cpp logica/nodos/NodoAsiento.h logica/Teatro.cpp logica/Teatro.h)
+add_executable(VentaBoletos main.cpp logica/estructuras/ListaAsientos.cpp logica/estructuras/ListaAsientos.h logica/nodos/NodoAsiento.cpp logica/nodos/NodoAsiento.h logica/Teatro.cpp logica/Teatro.h)

@@ -16,9 +16,11 @@ public:
 
     ListaAsientos *getAreaPreferencial() const;
 
-    reservarAreaPreferencia(int index, std::string ced);
-    pagarAreaPreferencialReservado(std::string ced);
-    pagarAreaPreferencial(int index);
+    bool reservarAreaPreferencia(int index, std::string ced);
+
+    bool pagarAreaPreferencialReservado(std::string ced);
+
+    bool pagarAreaPreferencial(int index);
 };
 
 

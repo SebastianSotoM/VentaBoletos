@@ -8,12 +8,14 @@ ListaAsientos::ListaAsientos() {
     this->precioAsiento = 0;
     this->precioTotal = 0;
     this->cabeza = nullptr;
+    this->longitud = 0;
 }
 
 ListaAsientos::ListaAsientos(int precioAsiento) {
     this->precioAsiento = precioAsiento;
     this->precioTotal = 0;
     this->cabeza = nullptr;
+    this->longitud = 0;
 }
 
 NodoAsiento *ListaAsientos::getCabeza() const {
@@ -59,7 +61,7 @@ void ListaAsientos::insertarInicio(NodoAsiento *nodo) {
         nodo->setSiguiente(getCabeza());
         setCabeza(nodo);
     }
-    longitud++;
+    this->longitud++;
 }
 
 NodoAsiento* ListaAsientos::buscarIndice(int indice) {
