@@ -1,22 +1,27 @@
 //
-// Created by sebas on 3/17/2019.
+// Created by sebas on 3/19/2019.
 //
 
 #ifndef VENTABOLETOS_LISTAASIENTOS_H
 #define VENTABOLETOS_LISTAASIENTOS_H
 
-#include <iostream>
-#include "EstructuraBase.h"
 #include "../nodos/NodoAsiento.h"
 
-class ListaAsientos : public EstructuraBase {
+class ListaAsientos {
 private:
+    NodoAsiento *cabeza;
     int precioAsiento;
     int precioTotal;
+    int longitud;
+
 public:
     ListaAsientos();
 
-    ListaAsientos(int _precioAsiento);
+    ListaAsientos(int precioAsiento);
+
+    NodoAsiento *getCabeza() const;
+
+    void setCabeza(NodoAsiento *cabeza);
 
     int getPrecioAsiento() const;
 
@@ -24,58 +29,19 @@ public:
 
     int getPrecioTotal() const;
 
-    void calcPrecioTotal(int);
+    void setPrecioTotal(int precioTotal);
 
-    bool insertarInicio(Nodo *nuevo) {
-        if(isChild(nuevo)){
-            NodoAsiento *n = (NodoAsiento *) nuevo;
-            if(esVacia()){
-                setCabeza(n);
-            }else{
-                n->setSiguiente(getCabeza());
-                setCabeza(n);
-            }
-            longitud++;
-            return true;
-        }
-        return false;
-    }
+    int getLongitud() const;
 
-    bool insertarFinal(Nodo *nuevo) {
-        if(isChild(nuevo)){
-            NodoAsiento *n = (NodoAsiento *) nuevo;
+    void setLongitud(int longitud);
 
+    bool esVacia();
 
-            longitud++;
-            return true;
-        }
-        return false;
-    }
+    void insertarInicio(NodoAsiento * nodo);
 
-    bool insertarOrdenado(Nodo *nuevo) {
-        if(isChild(nuevo)){
-            NodoAsiento *n = (NodoAsiento *) nuevo;
+    NodoAsiento * buscarIndice(int indice);
 
-
-            longitud++;
-            return true;
-        }
-        return false;
-    }
-
-    bool eliminar(int) {
-        return false;
-    }
-
-    NodoAsiento *buscarIndice(int index);
-
-    NodoAsiento *buscarCedulaReservacion(std::string ced);
-
-    bool isChild(Nodo * toCast) {
-        if(toCast->getClassName() == "NodoAsiento")
-            return true;
-        return false;
-    }
+    NodoAsiento * buscarCedReservacion(std::string cedReservacion);
 
 };
 

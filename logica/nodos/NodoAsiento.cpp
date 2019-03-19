@@ -1,36 +1,46 @@
 //
-// Created by sebas on 3/17/2019.
+// Created by sebas on 3/19/2019.
 //
 
 #include "NodoAsiento.h"
 
-NodoAsiento::NodoAsiento() {
-    this->cedulaReservacion = "";
-    this->pago = false;
-    this->reservado = false;
+NodoAsiento *NodoAsiento::getSiguiente() const {
+    return siguiente;
 }
 
-bool NodoAsiento::esPago() {
-    return this->pago;
+void NodoAsiento::setSiguiente(NodoAsiento *siguiente) {
+    NodoAsiento::siguiente = siguiente;
 }
 
-bool NodoAsiento::esReservado() {
-    return this->reservado;
+const std::string &NodoAsiento::getCedReservacion() const {
+    return cedReservacion;
 }
 
-std::string NodoAsiento::getCedulaReservacion() {
-    return this->cedulaReservacion;
+void NodoAsiento::setCedReservacion(const std::string &cedReservacion) {
+    NodoAsiento::cedReservacion = cedReservacion;
 }
 
-void NodoAsiento::setPago(bool _pago) {
-    this->pago = _pago;
+bool NodoAsiento::isReservado() const {
+    return reservado;
 }
 
-void NodoAsiento::setReservado(bool _reservado) {
-    this->reservado = _reservado;
+void NodoAsiento::setReservado(bool reservado) {
+    NodoAsiento::reservado = reservado;
 }
 
-void NodoAsiento::reservar(std::string _ced) {
-    this->cedulaReservacion = _ced;
-    this->reservado = true;
+bool NodoAsiento::isPagado() const {
+    return pagado;
+}
+
+void NodoAsiento::setPagado(bool pagado) {
+    NodoAsiento::pagado = pagado;
+}
+
+bool NodoAsiento::reservar(std::string &ced) {
+    if(!this->reservado){
+        this->reservado = true;
+        this->cedReservacion = ced;
+    }
+
+    
 }

@@ -1,18 +1,27 @@
 //
-// Created by sebas on 3/17/2019.
+// Created by sebas on 3/19/2019.
 //
 
 #include "ListaAsientos.h"
 
 ListaAsientos::ListaAsientos() {
-    this->precioTotal = 0;
     this->precioAsiento = 0;
+    this->precioTotal = 0;
+    this->cabeza = nullptr;
 }
 
-ListaAsientos::ListaAsientos(int _precioAsiento) {
-
+ListaAsientos::ListaAsientos(int precioAsiento) {
+    this->precioAsiento = precioAsiento;
     this->precioTotal = 0;
-    this->precioAsiento = _precioAsiento;
+    this->cabeza = nullptr;
+}
+
+NodoAsiento *ListaAsientos::getCabeza() const {
+    return cabeza;
+}
+
+void ListaAsientos::setCabeza(NodoAsiento *cabeza) {
+    ListaAsientos::cabeza = cabeza;
 }
 
 int ListaAsientos::getPrecioAsiento() const {
@@ -27,33 +36,49 @@ int ListaAsientos::getPrecioTotal() const {
     return precioTotal;
 }
 
-void ListaAsientos::calcPrecioTotal(int _precioTotal) {
-    NodoAsiento *aux = (NodoAsiento *) getCabeza();
-    int pagados = 0;
-    while (aux != nullptr) {
-        if (aux->esPago()) {
-            pagados++;
-        }
-    }
-    this->precioTotal = pagados * precioAsiento;
+void ListaAsientos::setPrecioTotal(int precioTotal) {
+    ListaAsientos::precioTotal = precioTotal;
 }
 
-NodoAsiento *ListaAsientos::buscarIndice(int index) {
-    if (!esVacia()) {
-        NodoAsiento *aux = (NodoAsiento *) getCabeza();
+int ListaAsientos::getLongitud() const {
+    return longitud;
+}
+
+void ListaAsientos::setLongitud(int longitud) {
+    ListaAsientos::longitud = longitud;
+}
+
+bool ListaAsientos::esVacia() {
+    return this->longitud <= 0;
+}
+
+void ListaAsientos::insertarInicio(NodoAsiento *nodo) {
+    if(esVacia()){
+        setCabeza(nodo);
+    }else{
+        nodo->setSiguiente(getCabeza());
+        setCabeza(nodo);
+    }
+    longitud++;
+}
+
+NodoAsiento* ListaAsientos::buscarIndice(int indice) {
+    if(!esVacia()){
+        NodoAsiento *aux = getCabeza();
         int i = 0;
-        while (i != index && aux != nullptr) {
-            aux = (NodoAsiento *) aux->getSiguiente();
+        while (i != indice && aux != nullptr) {
+            aux = aux->getSiguiente();
         }
-        return (aux == nullptr)?nullptr:aux;
+        return aux;    
     }
+    return nullptr;
 }
 
-NodoAsiento *ListaAsientos::buscarCedulaReservacion(std::string ced) {
+NodoAsiento* ListaAsientos::buscarCedReservacion(std::string cedReservacion) {
     if (!esVacia()) {
-        NodoAsiento *aux = (NodoAsiento *) getCabeza();
-        while (aux != nullptr && aux->getCedulaReservacion() != ced) {
-            aux = (NodoAsiento *) aux->getSiguiente();
+        NodoAsiento *aux = getCabeza();
+        while (aux != nullptr && aux->getCedReservacion() != cedReservacion) {
+            aux = aux->getSiguiente();
         }
         return aux;
     }
