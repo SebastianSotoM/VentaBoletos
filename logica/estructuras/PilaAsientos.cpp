@@ -82,16 +82,16 @@ std::string PilaAsientos::pushCompra() {
         this->setCabeza(comprado);
         this->longitud++;
         return "Su pago se ha realizado correctamente";
-    } else if (longitud <= maxLongitud) {
+    } else if (longitud == maxLongitud) {
+        setFull(true);
+        return "La hilera esta llena";
+    } else if (longitud < maxLongitud) {
         NodoAsiento *comprado = new NodoAsiento();
         pagarAsiento(comprado);
         comprado->setSiguiente(this->getCabeza());
         this->setCabeza(comprado);
         this->longitud++;
         return "Su pago se ha realizado correctamente";
-    } else if(longitud == maxLongitud){
-        setFull(true);
-        return "La hilera esta llena";
     }
     else {
         return "No se pudo comprar el boleto";

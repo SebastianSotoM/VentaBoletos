@@ -34,7 +34,8 @@ void ListaPilaAsientos::setPrecioAsiento(int precioAsiento) {
     ListaPilaAsientos::precioAsiento = precioAsiento;
 }
 
-int ListaPilaAsientos::getPrecioTotal() const {
+int ListaPilaAsientos::getPrecioTotal() {
+    calcularPrecioTotal();
     return precioTotal;
 }
 
@@ -67,14 +68,23 @@ void ListaPilaAsientos::insertarInicio(NodoPilaAsiento *nodo) {
 std::string ListaPilaAsientos::pagarAsiento() {
     if(!esVacia()){
         NodoPilaAsiento * aux = getCabeza();
-        while(aux->getPila()->isFull() && aux != nullptr){
+        while (aux != nullptr && aux->getPila()->isFull()) {
             aux = aux->getSiguiente();
         }
         if(aux != nullptr){
-            return aux->getPila()->pushCompra();
+            std::string res = aux->getPila()->pushCompra();
+            if (res == "La hilera esta llena") {
+                aux = aux->getSiguiente();
+                if (aux != nullptr) {
+                    res = aux->getPila()->pushCompra();
+                } else {
+                    res = "Ya no hay espacios";
+                }
+            }
+            return res;
         }
     }
-    return nullptr;
+    return "No se pudo comprar ningun espacio";
 }
 
 void ListaPilaAsientos::calcularPrecioTotal() {
@@ -82,6 +92,7 @@ void ListaPilaAsientos::calcularPrecioTotal() {
         NodoPilaAsiento *aux = getCabeza();
         while(aux != nullptr){
             this->precioTotal += aux->getPila()->getPrecioTotal();
+            aux = aux->getSiguiente();
         }
     }
 }

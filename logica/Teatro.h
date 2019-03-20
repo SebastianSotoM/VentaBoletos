@@ -16,8 +16,12 @@ private:
     ListaPilaAsientos *graderiaPreferencialIzquierda;
     ListaPilaAsientos *graderiaPreferencialDerecha;
 
+    void calcularIngresosTotales();
+
 public:
     Teatro();
+
+    void initGraderiaPreferencial(ListaPilaAsientos *graderia);
 
     ListaAsientos *getAreaPreferencial() const;
 
@@ -25,9 +29,7 @@ public:
 
     ListaPilaAsientos *getGraderiaPreferencialDerecha() const;
 
-    int getIngresosTotales() const;
-
-    void calcularIngresosTotales();
+    int getIngresosTotales();
 
     std::string reservarAreaPreferencia(int index, std::string ced);
 
@@ -35,7 +37,11 @@ public:
 
     std::string  pagarAreaPreferencial(int index);
 
-    void initGraderiaPreferencial(ListaPilaAsientos *graderia);
+    std::string pagarGraderia(ListaPilaAsientos *graderia);
+
+    std::string pagarGraderiaIzquierda();
+
+    std::string pagarGraderiaDerecha();
 
 };
 

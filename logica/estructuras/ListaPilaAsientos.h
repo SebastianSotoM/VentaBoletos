@@ -27,7 +27,7 @@ public:
 
     void setPrecioAsiento(int precioAsiento);
 
-    int getPrecioTotal() const;
+    int getPrecioTotal();
 
     void setPrecioTotal(int precioTotal);
 

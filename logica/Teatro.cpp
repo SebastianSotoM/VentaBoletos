@@ -6,6 +6,7 @@
 #include "Teatro.h"
 
 Teatro::Teatro() {
+    this->ingresosTotales = 0;
     this->areaPreferencial = new ListaAsientos(7000);
 
     for (int i = 0; i < 10; i++) {
@@ -17,6 +18,12 @@ Teatro::Teatro() {
     initGraderiaPreferencial(graderiaPreferencialIzquierda);
 
     initGraderiaPreferencial(graderiaPreferencialDerecha);
+}
+
+void Teatro::initGraderiaPreferencial(ListaPilaAsientos *graderia) {
+    for (int i = 0; i < 5; i++) {
+        graderia->insertarInicio(new NodoPilaAsiento(5500, 5));
+    }
 }
 
 ListaAsientos *Teatro::getAreaPreferencial() const {
@@ -32,7 +39,7 @@ ListaPilaAsientos *Teatro::getGraderiaPreferencialDerecha() const {
 }
 
 std::string Teatro::pagarAreaPreferencial(int index) {
-    NodoAsiento *aux = this->areaPreferencial->buscarIndice(index);
+    NodoAsiento *aux = this->areaPreferencial->buscarIndice(index - 1);
     if (aux == nullptr) {
         return "Ese numero de asiento no es valido";
     }
@@ -42,8 +49,9 @@ std::string Teatro::pagarAreaPreferencial(int index) {
     if (!aux->isPagado()) {
         this->areaPreferencial->pagarAsiento(aux);
         return "Su pago se ha realizado correctamente";
+    } else {
+        return "Este asiento ya fue cancelado";
     }
-    return "No se pudo efectuar su pago";
 }
 
 std::string Teatro::reservarAreaPreferencia(int index, std::string ced) {
@@ -70,16 +78,25 @@ std::string Teatro::pagarAreaPreferencialReservado(std::string ced) {
     return "El asiento no se pudo cancelar";
 }
 
-int Teatro::getIngresosTotales() const {
+int Teatro::getIngresosTotales() {
+    calcularIngresosTotales();
     return ingresosTotales;
 }
 
 void Teatro::calcularIngresosTotales() {
-    this->ingresosTotales = this->areaPreferencial->getPrecioTotal();
+    this->ingresosTotales += this->areaPreferencial->getPrecioTotal();
+    this->ingresosTotales += this->graderiaPreferencialIzquierda->getPrecioTotal();
+    this->ingresosTotales += this->graderiaPreferencialDerecha->getPrecioTotal();
 }
 
-void Teatro::initGraderiaPreferencial(ListaPilaAsientos *graderia) {
-    for (int i = 0; i < 5; i++) {
-        graderia->insertarInicio(new NodoPilaAsiento(5500, 5));
-    }
+std::string Teatro::pagarGraderia(ListaPilaAsientos *graderia) {
+    return graderia->pagarAsiento();
+}
+
+std::string Teatro::pagarGraderiaDerecha() {
+    return pagarGraderia(this->graderiaPreferencialDerecha);
+}
+
+std::string Teatro::pagarGraderiaIzquierda() {
+    return pagarGraderia(this->graderiaPreferencialIzquierda);
 }
