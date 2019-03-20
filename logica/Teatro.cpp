@@ -17,7 +17,13 @@ ListaAsientos *Teatro::getAreaPreferencial() const {
 }
 
 bool Teatro::pagarAreaPreferencial(int index) {
+    NodoAsiento * aux = this->areaPreferencial->buscarIndice(index);
+    if(aux != nullptr && !aux->isReservado() && !aux->isPagado()){
+        aux->setPagado(true);
 
+        return true;
+    }
+    return false;
 }
 
 bool Teatro::reservarAreaPreferencia(int index, std::string ced) {

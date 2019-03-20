@@ -9,7 +9,7 @@ NodoAsiento *NodoAsiento::getSiguiente() const {
 }
 
 void NodoAsiento::setSiguiente(NodoAsiento *siguiente) {
-    NodoAsiento::siguiente = siguiente;
+    this->siguiente = siguiente;
 }
 
 const std::string &NodoAsiento::getCedReservacion() const {
@@ -17,7 +17,7 @@ const std::string &NodoAsiento::getCedReservacion() const {
 }
 
 void NodoAsiento::setCedReservacion(const std::string &cedReservacion) {
-    NodoAsiento::cedReservacion = cedReservacion;
+    this->cedReservacion = cedReservacion;
 }
 
 bool NodoAsiento::isReservado() const {
@@ -25,7 +25,7 @@ bool NodoAsiento::isReservado() const {
 }
 
 void NodoAsiento::setReservado(bool reservado) {
-    NodoAsiento::reservado = reservado;
+    this->reservado = reservado;
 }
 
 bool NodoAsiento::isPagado() const {
@@ -33,7 +33,7 @@ bool NodoAsiento::isPagado() const {
 }
 
 void NodoAsiento::setPagado(bool pagado) {
-    NodoAsiento::pagado = pagado;
+    this->pagado = pagado;
 }
 
 bool NodoAsiento::reservar(std::string &ced) {
@@ -41,6 +41,4 @@ bool NodoAsiento::reservar(std::string &ced) {
         this->reservado = true;
         this->cedReservacion = ced;
     }
-
-    
 }

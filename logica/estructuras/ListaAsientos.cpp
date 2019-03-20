@@ -70,6 +70,7 @@ NodoAsiento* ListaAsientos::buscarIndice(int indice) {
         int i = 0;
         while (i != indice && aux != nullptr) {
             aux = aux->getSiguiente();
+            i++;
         }
         return aux;    
     }
