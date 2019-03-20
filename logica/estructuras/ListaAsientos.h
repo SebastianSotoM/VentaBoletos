@@ -43,6 +43,7 @@ public:
 
     NodoAsiento * buscarCedReservacion(std::string cedReservacion);
 
+    void pagarAsiento(NodoAsiento *nodo);
 };
 
 

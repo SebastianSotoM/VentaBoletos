@@ -37,8 +37,6 @@ void NodoAsiento::setPagado(bool pagado) {
 }
 
 bool NodoAsiento::reservar(std::string &ced) {
-    if(!this->reservado){
-        this->reservado = true;
-        this->cedReservacion = ced;
-    }
+    this->reservado = true;
+    this->cedReservacion = ced;
 }

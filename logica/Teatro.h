@@ -10,17 +10,22 @@
 
 class Teatro {
 private:
+    int ingresosTotales;
     ListaAsientos *areaPreferencial;
 public:
     Teatro();
 
     ListaAsientos *getAreaPreferencial() const;
 
-    bool reservarAreaPreferencia(int index, std::string ced);
+    int getIngresosTotales() const;
 
-    bool pagarAreaPreferencialReservado(std::string ced);
+    void calcularIngresosTotales();
 
-    bool pagarAreaPreferencial(int index);
+    std::string reservarAreaPreferencia(int index, std::string ced);
+
+    std::string  pagarAreaPreferencialReservado(std::string ced);
+
+    std::string  pagarAreaPreferencial(int index);
 };
 
 

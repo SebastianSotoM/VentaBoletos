@@ -87,3 +87,8 @@ NodoAsiento* ListaAsientos::buscarCedReservacion(std::string cedReservacion) {
     }
     return nullptr;
 }
+
+void ListaAsientos::pagarAsiento(NodoAsiento *nodo) {
+    nodo->setPagado(true);
+    this->precioTotal += precioAsiento;
+}
