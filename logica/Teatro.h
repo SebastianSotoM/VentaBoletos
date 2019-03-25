@@ -19,6 +19,9 @@ private:
     void calcularIngresosTotales();
 
 public:
+
+
+    
     Teatro();
 
     void initGraderiaPreferencial(ListaPilaAsientos *graderia);
