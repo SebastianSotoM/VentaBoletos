@@ -17,6 +17,8 @@ int main() {
     llenarGraderiaPreferencial(coco->getGraderiaPreferencialDerecha());
     cout << coco->pagarAreaPreferencial(1) << endl;
 
+    cout << coco->pagarGraderiaGeneral(9) << endl;
+
 
     cout << coco->getIngresosTotales();
 
