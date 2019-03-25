@@ -48,6 +48,12 @@ public:
     std::string pushCompra();
 
     void pagarAsiento(NodoAsiento *nodo);
+
+    void reservarAsiento(NodoAsiento *nodo,std::string &ced);
+
+    std::string pushReservacion(std::string &ced);
+
+    NodoAsiento * buscarAsiento(std::string &ced);
 };
 
 

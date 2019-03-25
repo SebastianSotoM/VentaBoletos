@@ -38,6 +38,20 @@ ListaPilaAsientos *Teatro::getGraderiaPreferencialDerecha() const {
     return graderiaPreferencialDerecha;
 }
 
+int Teatro::getIngresosTotales() {
+    calcularIngresosTotales();
+    return ingresosTotales;
+}
+
+void Teatro::calcularIngresosTotales() {
+    this->ingresosTotales += this->areaPreferencial->getPrecioTotal();
+    this->ingresosTotales += this->graderiaPreferencialIzquierda->getPrecioTotal();
+    this->ingresosTotales += this->graderiaPreferencialDerecha->getPrecioTotal();
+}
+
+//Area preferencial
+
+//Pagar
 std::string Teatro::pagarAreaPreferencial(int index) {
     NodoAsiento *aux = this->areaPreferencial->buscarIndice(index - 1);
     if (aux == nullptr) {
@@ -53,7 +67,7 @@ std::string Teatro::pagarAreaPreferencial(int index) {
         return "Este asiento ya fue cancelado";
     }
 }
-
+//Reservar
 std::string Teatro::reservarAreaPreferencia(int index, std::string ced) {
     NodoAsiento *aux = this->areaPreferencial->buscarIndice(index);
     if (aux == nullptr) {
@@ -64,7 +78,7 @@ std::string Teatro::reservarAreaPreferencia(int index, std::string ced) {
     }
     return "El asiento no se pudo reservar";
 }
-
+//PagarReservado
 std::string Teatro::pagarAreaPreferencialReservado(std::string ced) {
     NodoAsiento *porPagar = this->areaPreferencial->buscarCedReservacion(ced);
     if (porPagar == nullptr)
@@ -78,25 +92,27 @@ std::string Teatro::pagarAreaPreferencialReservado(std::string ced) {
     return "El asiento no se pudo cancelar";
 }
 
-int Teatro::getIngresosTotales() {
-    calcularIngresosTotales();
-    return ingresosTotales;
-}
+//Graderia
 
-void Teatro::calcularIngresosTotales() {
-    this->ingresosTotales += this->areaPreferencial->getPrecioTotal();
-    this->ingresosTotales += this->graderiaPreferencialIzquierda->getPrecioTotal();
-    this->ingresosTotales += this->graderiaPreferencialDerecha->getPrecioTotal();
-}
-
-std::string Teatro::pagarGraderia(ListaPilaAsientos *graderia) {
+//Pagar
+std::string Teatro::pagarGraderiaPreferencial(ListaPilaAsientos *graderia) {
     return graderia->pagarAsiento();
 }
-
 std::string Teatro::pagarGraderiaDerecha() {
-    return pagarGraderia(this->graderiaPreferencialDerecha);
+    return pagarGraderiaPreferencial(this->graderiaPreferencialDerecha);
+}
+std::string Teatro::pagarGraderiaIzquierda() {
+    return pagarGraderiaPreferencial(this->graderiaPreferencialIzquierda);
+}
+//Reservar
+std::string Teatro::reservarGraderiaPreferencial(ListaPilaAsientos *graderia, std::string &ced) {
+    return graderia->reservarAsiento(ced);
+}
+std::string Teatro::reservarGraderiaPreferencialIzquierda(std::string &ced){
+    return reservarGraderiaPreferencial(this->graderiaPreferencialIzquierda, ced);
+}
+std::string Teatro::reservarGraderiaPreferencialDerecha(std::string &ced){
+    return reservarGraderiaPreferencial(this->graderiaPreferencialDerecha, ced);
 }
 
-std::string Teatro::pagarGraderiaIzquierda() {
-    return pagarGraderia(this->graderiaPreferencialIzquierda);
-}
+//PagarReservado

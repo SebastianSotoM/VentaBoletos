@@ -41,6 +41,10 @@ public:
 
     std::string pagarAsiento();
 
+    std::string reservarAsiento(std::string &ced);
+
+    NodoAsiento * buscarAsiento(std::string &ced);
+
     void calcularPrecioTotal();
 };
 

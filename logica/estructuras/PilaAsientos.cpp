@@ -75,6 +75,11 @@ void PilaAsientos::pagarAsiento(NodoAsiento *nodo) {
     this->precioTotal += precioAsiento;
 }
 
+void PilaAsientos::reservarAsiento(NodoAsiento *nodo, std::string &ced) {
+    nodo->setReservado(true);
+    nodo->setCedReservacion(ced);
+}
+
 std::string PilaAsientos::pushCompra() {
     if (longitud <= 0) {
         NodoAsiento *comprado = new NodoAsiento();
@@ -92,9 +97,40 @@ std::string PilaAsientos::pushCompra() {
         this->setCabeza(comprado);
         this->longitud++;
         return "Su pago se ha realizado correctamente";
-    }
-    else {
+    } else {
         return "No se pudo comprar el boleto";
     }
 }
 
+std::string PilaAsientos::pushReservacion(std::string &ced) {
+    if (longitud <= 0) {
+        NodoAsiento *reservado = new NodoAsiento();
+        reservarAsiento(reservado, ced);
+        this->setCabeza(reservado);
+        this->longitud++;
+        return "Su reservacion se ha realizado correctamente";
+    } else if (longitud == maxLongitud) {
+        setFull(true);
+        return "La hilera esta llena";
+    } else if (longitud < maxLongitud) {
+        NodoAsiento *reservado = new NodoAsiento();
+        reservarAsiento(reservado, ced);
+        reservado->setSiguiente(this->getCabeza());
+        this->setCabeza(reservado);
+        this->longitud++;
+        return "Su reservacion se ha realizado correctamente";
+    } else {
+        return "No se pudo reservar el boleto";
+    }
+}
+
+NodoAsiento *PilaAsientos::buscarAsiento(std::string &ced) {
+    if (longitud > 0) {
+        NodoAsiento *aux = getCabeza();
+        while (aux != nullptr && aux->getCedReservacion() != ced) {
+            aux = aux->getSiguiente();
+        }
+        return aux;
+    }
+    return nullptr;
+}

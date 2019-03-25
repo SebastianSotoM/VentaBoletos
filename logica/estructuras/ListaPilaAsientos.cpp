@@ -87,6 +87,41 @@ std::string ListaPilaAsientos::pagarAsiento() {
     return "No se pudo comprar ningun espacio";
 }
 
+std::string ListaPilaAsientos::reservarAsiento(std::string &ced){
+    if(!esVacia()){
+        NodoPilaAsiento * aux = getCabeza();
+        while (aux != nullptr && aux->getPila()->isFull()) {
+            aux = aux->getSiguiente();
+        }
+        if(aux != nullptr){
+            std::string res = aux->getPila()->pushReservacion(ced);
+            if (res == "La hilera esta llena") {
+                aux = aux->getSiguiente();
+                if (aux != nullptr) {
+                    res = aux->getPila()->pushReservacion(ced);
+                } else {
+                    res = "Ya no hay espacios";
+                }
+            }
+            return res;
+        }
+    }
+    return "No se pudo reservar ningun espacio";
+
+}
+
+NodoAsiento * ListaPilaAsientos::buscarAsiento(std::string &ced){
+    if(!esVacia()){
+        NodoPilaAsiento *aux = getCabeza();
+        NodoAsiento *busqueda = nullptr;
+        while(aux != nullptr && busqueda == nullptr){
+            busqueda = aux->getPila()->buscarAsiento(ced);
+            aux = aux->getSiguiente();
+        }
+        return busqueda;
+    }
+}
+
 void ListaPilaAsientos::calcularPrecioTotal() {
     if(!esVacia()){
         NodoPilaAsiento *aux = getCabeza();
