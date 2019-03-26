@@ -116,3 +116,13 @@ std::string Teatro::reservarGraderiaPreferencialDerecha(std::string &ced){
 }
 
 //PagarReservado
+std::string Teatro::pagarGraderiaPreferencialReservado(ListaPilaAsientos *graderia, std::string &ced) {
+    return graderia->pagarAsientoReservado(ced);
+}
+
+std::string Teatro::pagarGraderiaPreferencialReservadoDerecha(std::string &ced) {
+    return pagarGraderiaPreferencialReservado(this->graderiaPreferencialDerecha,ced);
+}
+std::string Teatro::pagarGraderiaPreferencialReservadoIzquierda(std::string &ced){
+    return pagarGraderiaPreferencialReservado(this->graderiaPreferencialIzquierda,ced);
+}

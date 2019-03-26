@@ -19,6 +19,7 @@ private:
     void calcularIngresosTotales();
     std::string pagarGraderiaPreferencial(ListaPilaAsientos *graderia);
     std::string reservarGraderiaPreferencial(ListaPilaAsientos *graderia, std::string &ced);
+    std::string  pagarGraderiaPreferencialReservado(ListaPilaAsientos *graderia ,std::string &ced);
 
 public:
     Teatro();
@@ -53,7 +54,6 @@ public:
     std::string reservarGraderiaPreferencialDerecha(std::string &ced);
 
 //    PagarReservado
-    std::string  pagarGraderiaPreferencialReservado(ListaPilaAsientos *graderia ,std::string &ced);
     std::string  pagarGraderiaPreferencialReservadoIzquierda(std::string &ced);
     std::string  pagarGraderiaPreferencialReservadoDerecha(std::string &ced);
 

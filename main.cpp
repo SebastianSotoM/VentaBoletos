@@ -18,12 +18,17 @@ int main() {
     std::string ced4 = "33";
     std::string ced5 = "44";
     std::string ced6 = "55";
+    std::string ced7 = "nullced";
     coco->reservarGraderiaPreferencialDerecha(ced1);
     coco->reservarGraderiaPreferencialDerecha(ced2);
     coco->reservarGraderiaPreferencialDerecha(ced3);
     coco->reservarGraderiaPreferencialDerecha(ced4);
     coco->reservarGraderiaPreferencialDerecha(ced5);
     coco->reservarGraderiaPreferencialDerecha(ced6);
+    cout<<coco->pagarGraderiaPreferencialReservadoDerecha(ced2)<<endl;
+    cout<<coco->pagarGraderiaPreferencialReservadoDerecha(ced2)<<endl;
+    cout<<coco->pagarGraderiaPreferencialReservadoDerecha(ced5)<<endl;
+    cout<<coco->pagarGraderiaPreferencialReservadoDerecha(ced7)<<endl;
     cout << coco->getIngresosTotales();
 
     return 0;

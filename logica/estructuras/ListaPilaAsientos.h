@@ -7,6 +7,7 @@
 
 
 #include "../nodos/NodoPilaAsiento.h"
+#include <tuple>
 
 class ListaPilaAsientos {
 private:
@@ -43,9 +44,11 @@ public:
 
     std::string reservarAsiento(std::string &ced);
 
-    NodoAsiento * buscarAsiento(std::string &ced);
+    std::tuple <NodoAsiento *,PilaAsientos *> buscarAsiento(std::string &ced);
 
     void calcularPrecioTotal();
+
+    std::string pagarAsientoReservado(std::string &ced);
 };
 
 

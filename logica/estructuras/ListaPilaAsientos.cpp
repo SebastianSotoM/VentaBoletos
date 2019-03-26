@@ -110,7 +110,7 @@ std::string ListaPilaAsientos::reservarAsiento(std::string &ced){
 
 }
 
-NodoAsiento * ListaPilaAsientos::buscarAsiento(std::string &ced){
+std::tuple<NodoAsiento *,PilaAsientos *> ListaPilaAsientos::buscarAsiento(std::string &ced){
     if(!esVacia()){
         NodoPilaAsiento *aux = getCabeza();
         NodoAsiento *busqueda = nullptr;
@@ -118,8 +118,13 @@ NodoAsiento * ListaPilaAsientos::buscarAsiento(std::string &ced){
             busqueda = aux->getPila()->buscarAsiento(ced);
             aux = aux->getSiguiente();
         }
-        return busqueda;
+        if(busqueda != nullptr && aux != nullptr){
+            std::tuple<NodoAsiento *,PilaAsientos *> result(busqueda,aux->getPila());
+            return result;
+        }
     }
+    std::tuple<NodoAsiento *,PilaAsientos *> def(nullptr, nullptr);
+    return def;
 }
 
 void ListaPilaAsientos::calcularPrecioTotal() {
@@ -130,4 +135,20 @@ void ListaPilaAsientos::calcularPrecioTotal() {
             aux = aux->getSiguiente();
         }
     }
+}
+
+std::string ListaPilaAsientos::pagarAsientoReservado(std::string &ced) {
+    std::tuple<NodoAsiento *,PilaAsientos *> result = buscarAsiento(ced);
+    NodoAsiento * asientoReservado = std::get<0> (result);
+    PilaAsientos * filaAsientos = std::get<1> (result);
+    if(asientoReservado != nullptr && filaAsientos != nullptr){
+        if(asientoReservado->isPagado()){
+            return "Este espacio ya fue pagado.";
+        }else{
+            asientoReservado->setPagado(true);
+            filaAsientos->setPrecioTotal(filaAsientos->getPrecioTotal() + filaAsientos->getPrecioAsiento());
+            return "Se realizo el pago del asiento reservado";
+        }
+    }
+    return "No hay asientos reservados con esa cedula";
 }
