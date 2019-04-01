@@ -84,7 +84,7 @@ std::string ListaPilaAsientos::pagarAsiento() {
             return res;
         }
     }
-    return "No se pudo comprar ningun espacio";
+    return "Ya no hay espacios";
 }
 
 std::string ListaPilaAsientos::reservarAsiento(std::string &ced){
@@ -106,7 +106,7 @@ std::string ListaPilaAsientos::reservarAsiento(std::string &ced){
             return res;
         }
     }
-    return "No se pudo reservar ningun espacio";
+    return "Ya no hay espacios";
 
 }
 

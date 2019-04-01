@@ -12,15 +12,6 @@ void llenarGraderiaPreferencial(ListaPilaAsientos *t) {
 }
 
 int main() {
-    Teatro *coco = new Teatro();
 
-    llenarGraderiaPreferencial(coco->getGraderiaPreferencialIzquierda());
-    llenarGraderiaPreferencial(coco->getGraderiaPreferencialDerecha());
-    cout << coco->pagarAreaPreferencial(1) << endl;
-
-    cout << coco->pagarGraderiaGeneral(9) << endl;
-
-
-    cout << coco->getIngresosTotales();
     return 0;
 }
