@@ -17,7 +17,7 @@ private:
     ListaPilaAsientos *graderiaPreferencialIzquierda;
     ListaPilaAsientos *graderiaPreferencialDerecha;
     ColaStrings * colaEspera;
-
+    ListaAsientos * graderiaGeneral;
     void calcularIngresosTotales();
     std::string pagarGraderiaPreferencial(ListaPilaAsientos *graderia);
     std::string reservarGraderiaPreferencial(ListaPilaAsientos *graderia, std::string &ced);
@@ -30,6 +30,9 @@ public:
 
     ListaAsientos *getAreaPreferencial() const;
 
+    ListaAsientos *getGraderiaGeneral() const;
+
+
     ListaPilaAsientos *getGraderiaPreferencialIzquierda() const;
 
     ListaPilaAsientos *getGraderiaPreferencialDerecha() const;
@@ -39,6 +42,10 @@ public:
 //    Area preferencial
 
 //    Pagar
+    std::string reservarGraderiaGeneral(int index, std::string ced);
+
+    std::string  pagarGraderiaGeneralReservado(std::string ced);
+
     std::string  pagarAreaPreferencial(int index);
 //    Reservar
     std::string reservarAreaPreferencia(int index, std::string ced);
@@ -46,6 +53,9 @@ public:
     std::string  pagarAreaPreferencialReservado(std::string ced);
 
 //    Graderia preferencial
+
+    std::string  pagarGraderiaGeneral(int index);
+    std::string pagarGraderia(ListaPilaAsientos *graderia);
 
 //    Pagar
     std::string pagarGraderiaIzquierda();
