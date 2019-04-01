@@ -44,6 +44,7 @@ int Teatro::getIngresosTotales() {
 }
 
 void Teatro::calcularIngresosTotales() {
+    this->ingresosTotales = 0;
     this->ingresosTotales += this->areaPreferencial->getPrecioTotal();
     this->ingresosTotales += this->graderiaPreferencialIzquierda->getPrecioTotal();
     this->ingresosTotales += this->graderiaPreferencialDerecha->getPrecioTotal();

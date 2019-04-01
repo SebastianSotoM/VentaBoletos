@@ -1,5 +1,6 @@
 #include <iostream>
 #include "logica/Teatro.h"
+#include "logica/estructuras/ColaStrings.h"
 
 using namespace std;
 
@@ -11,25 +12,6 @@ void llenarGraderiaPreferencial(ListaPilaAsientos *t) {
 }
 
 int main() {
-    Teatro *coco = new Teatro();
-    std::string ced1 = "305270799";
-    std::string ced2 = "11";
-    std::string ced3 = "22";
-    std::string ced4 = "33";
-    std::string ced5 = "44";
-    std::string ced6 = "55";
-    std::string ced7 = "nullced";
-    coco->reservarGraderiaPreferencialDerecha(ced1);
-    coco->reservarGraderiaPreferencialDerecha(ced2);
-    coco->reservarGraderiaPreferencialDerecha(ced3);
-    coco->reservarGraderiaPreferencialDerecha(ced4);
-    coco->reservarGraderiaPreferencialDerecha(ced5);
-    coco->reservarGraderiaPreferencialDerecha(ced6);
-    cout<<coco->pagarGraderiaPreferencialReservadoDerecha(ced2)<<endl;
-    cout<<coco->pagarGraderiaPreferencialReservadoDerecha(ced2)<<endl;
-    cout<<coco->pagarGraderiaPreferencialReservadoDerecha(ced5)<<endl;
-    cout<<coco->pagarGraderiaPreferencialReservadoDerecha(ced7)<<endl;
-    cout << coco->getIngresosTotales();
 
     return 0;
 }

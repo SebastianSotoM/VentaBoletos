@@ -8,6 +8,7 @@
 
 #include "estructuras/ListaAsientos.h"
 #include "estructuras/ListaPilaAsientos.h"
+#include "estructuras/ColaStrings.h"
 
 class Teatro {
 private:
@@ -15,6 +16,7 @@ private:
     ListaAsientos *areaPreferencial;
     ListaPilaAsientos *graderiaPreferencialIzquierda;
     ListaPilaAsientos *graderiaPreferencialDerecha;
+    ColaStrings * colaEspera;
 
     void calcularIngresosTotales();
     std::string pagarGraderiaPreferencial(ListaPilaAsientos *graderia);
